@@ -1,0 +1,441 @@
+
+
+
+
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>ThreadPulse Boutique Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Playfair+Display:wght@500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&amp;family=Playfair+Display:wght@100..900&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#181a2c",
+                        "on-tertiary-fixed": "#241a00",
+                        "tertiary-fixed-dim": "#e9c349",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#e2e3e1",
+                        "surface-container-highest": "#e3e2e2",
+                        "surface-tint": "#5b5d72",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#cca830",
+                        "secondary-fixed": "#e2e3e1",
+                        "outline": "#77767d",
+                        "on-background": "#1b1c1c",
+                        "surface-container": "#efeded",
+                        "secondary-fixed-dim": "#c6c7c5",
+                        "error-container": "#ffdad6",
+                        "secondary": "#5d5f5d",
+                        "inverse-surface": "#303031",
+                        "primary-fixed": "#e0e0fa",
+                        "surface": "#fbf9f9",
+                        "surface-bright": "#fbf9f9",
+                        "surface-container-low": "#f5f3f3",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#82849a",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#1a1c2e",
+                        "primary-fixed-dim": "#c4c5dd",
+                        "on-secondary-container": "#636563",
+                        "tertiary": "#735c00",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#1a1c1b",
+                        "on-secondary-fixed-variant": "#454746",
+                        "on-surface": "#1b1c1c",
+                        "inverse-on-surface": "#f2f0f0",
+                        "on-surface-variant": "#46464c",
+                        "background": "#fbf9f9",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#444559",
+                        "tertiary-fixed": "#ffe088",
+                        "surface-variant": "#e3e2e2",
+                        "surface-container-high": "#e9e8e7",
+                        "surface-dim": "#dbdad9",
+                        "outline-variant": "#c7c5cd",
+                        "primary": "#010211",
+                        "on-tertiary-container": "#4f3e00",
+                        "inverse-primary": "#c4c5dd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "unit": "4px",
+                        "gutter": "24px",
+                        "stack-sm": "12px",
+                        "stack-lg": "48px",
+                        "margin-mobile": "20px",
+                        "container-max": "1440px",
+                        "stack-md": "24px",
+                        "section-gap": "96px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-md": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "body-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #fbf9f9;
+            color: #1b1c1c;
+            -webkit-font-smoothing: antialiased;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .editorial-border {
+            border-bottom: 1px solid #77767d;
+        }
+        
+        .hover-invert:hover {
+            background-color: #010211;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body class="font-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-desktop h-16 bg-surface border-b border-outline">
+<div class="flex items-center gap-8">
+<span class="font-headline-md text-headline-md text-primary tracking-tight">ThreadPulse</span>
+<div class="hidden md:flex gap-6">
+<a class="text-primary font-bold border-b-2 border-primary font-label-md text-label-md" href="dashboard.html">Dashboard</a>
+<a class="text-secondary hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="inventory.html" target="_blank">Inventory</a>
+<a class="text-secondary hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="addnewproduct.html">Add Item</a>
+
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-2 top-1/2 -translate-y-1/2 text-secondary text-sm">search</span>
+<input class="bg-transparent border-b border-outline focus:border-primary transition-all duration-300 pl-8 pr-2 py-1 text-label-md outline-none w-48 focus:w-64" placeholder="Search Boutique..." type="text">
+</div>
+<span class="material-symbols-outlined text-primary cursor-pointer active:scale-95 transition-all" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-primary cursor-pointer active:scale-95 transition-all" data-icon="shopping_bag">shopping_bag</span>
+</div>
+</nav>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 flex flex-col py-stack-lg z-40 bg-surface border-r border-outline hidden xl:flex">
+<div class="px-6 mb-10">
+<h2 class="font-headline-md text-headline-md text-primary">Boutique Admin</h2>
+<p class="font-label-md text-label-sm text-secondary uppercase tracking-widest mt-1">Premium Management</p>
+</div>
+<div class="flex flex-col gap-1 px-4">
+<a class="flex items-center gap-3 px-4 py-3 text-primary font-bold bg-surface-container-high border-r-2 border-primary scale-[0.99] transition-transform font-label-md text-label-md" href="dashboard.html">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span> Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-low transition-all duration-300 font-label-md text-label-md" href="inventory.html">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span> Inventory
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-low transition-all duration-300 font-label-md text-label-md" href="">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span> Orders
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-low transition-all duration-300 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span> Stylist Insights
+            </a>
+</div>
+<div class="mt-auto px-4 flex flex-col gap-1">
+<a href="addnewproduct.html">
+    <button class="bg-primary text-white py-3 px-4 font-label-md text-label-md uppercase tracking-widest mb-6 hover:opacity-90 transition-opacity">
+                Add New Product
+            </button>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-secondary hover:bg-surface-container-low font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span> Settings
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-secondary hover:bg-surface-container-low font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span> Support
+            </a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="pt-16 xl:pl-64 min-h-screen">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg">
+<!-- Header Section -->
+<!-- Header & Filter Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-stack-md mb-stack-lg">
+<div>
+<h1 class="font-display-lg text-display-lg mb-2">Inventory Management</h1>
+<p class="text-secondary font-body-md max-w-xl">A meticulously curated overview of the ThreadPulse flagship collection. Manage your high-end apparel stock with digital precision.</p>
+</div>
+<div class="flex flex-wrap gap-stack-md items-end">
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm uppercase text-secondary">Season</label>
+<select class="signature-input font-label-md text-label-md pr-8 py-1 cursor-pointer">
+<option>All Seasons</option>
+<option>Spring/Summer 24</option>
+<option>Autumn/Winter 24</option>
+<option>Resort 25</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm uppercase text-secondary">Category</label>
+<select class="signature-input font-label-md text-label-md pr-8 py-1 cursor-pointer">
+<option>All Categories</option>
+<option>Outerwear</option>
+<option>Tops</option>
+<option>Bottoms</option>
+<option>Accessories</option>
+</select>
+</div>
+<button class="flex items-center gap-2 border border-primary px-6 py-2 text-primary font-label-md text-label-md uppercase tracking-widest hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="filter_list">filter_list</span>
+                        More Filters
+                    </button>
+</div>
+</div>
+<!-- Inventory Table -->
+<div class="bg-surface-container-lowest border border-outline-variant overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant bg-surface-container-low">
+<th class="px-6 py-4 font-label-md text-label-md uppercase tracking-widest text-primary">Item</th>
+<th class="px-6 py-4 font-label-md text-label-md uppercase tracking-widest text-primary">Category</th>
+<th class="px-6 py-4 font-label-md text-label-md uppercase tracking-widest text-primary">SKU</th>
+<th class="px-6 py-4 font-label-md text-label-md uppercase tracking-widest text-primary text-center">Stock</th>
+<th class="px-6 py-4 font-label-md text-label-md uppercase tracking-widest text-primary text-right">Price</th>
+<th class="px-6 py-4 font-label-md text-label-md uppercase tracking-widest text-primary text-center">Actions</th>
+</tr>
+</thead>
+<tbody id="inventory-data-rows" class="divide-y divide-outline-variant">
+    
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-6">
+<div class="flex items-center gap-4">
+<div class="w-20 h-24 bg-surface-container-high border border-outline-variant flex-shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A premium double-breasted cashmere overcoat in a deep charcoal grey, hanging against a minimalist white gallery wall. The fabric texture is visible and luxurious, with soft studio lighting highlighting the elegant drape and fine tailoring. High-end fashion editorial style with monochrome aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgj9lhVMCiUdu8mnuT1-HLVVIRQxiwb1m3Hi3hgB0uVm61m6olOYx0RHN2vs885dIDJeCTr3L3M3GQUKjkHTc-YI6Us8FDAq2WiysM8XWy8Wk30mglcb0YsLxor6UgVrXyzXB1GB0m288khPj1iVCRG6ABTN373_xRueEAfXfB2mAQ8wSqpdPAvL_dneTqCgWyKjjozZnUn-24y9VeJEops80-26y3WUpicXV6DtNvaAKXDE_UEfBijOpKDbiXrGv96KeU3WtLRVE">
+</div>
+<div>
+<p class="font-headline-md text-[18px] text-primary">Cashmere Overcoat</p>
+<p class="font-label-sm text-label-sm text-secondary uppercase">Midnight Charcoal</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-6 font-body-md text-secondary">Outerwear</td>
+<td class="px-6 py-6 font-label-md text-label-md text-outline">TP-AW24-CASH-01</td>
+<td class="px-6 py-6 text-center">
+<span class="px-3 py-1 font-label-sm text-label-sm border border-primary bg-primary text-on-primary">12 IN STOCK</span>
+</td>
+<td class="px-6 py-6 font-label-md text-label-md text-primary text-right">$1,250.00</td>
+<td class="px-6 py-6">
+<div class="flex justify-center gap-4 text-outline group-hover:text-primary transition-colors">
+<button class="material-symbols-outlined hover:scale-110 transition-transform" data-icon="edit">edit</button>
+<button class="material-symbols-outlined hover:text-error hover:scale-110 transition-transform" data-icon="delete">delete</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-6">
+<div class="flex items-center gap-4">
+<div class="w-20 h-24 bg-surface-container-high border border-outline-variant flex-shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A crisp, white silk-blend tailored shirt meticulously folded on a reflective glass surface. The lighting is bright and high-key, creating a clean minimalist feel. Subtle shadows define the sharp collar and fine stitching of the garment. Boutique luxury retail presentation with pristine white and neutral tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLk6sJufcwWf5eGyL0mBvbKbALM1GKTc-z86dOxtt1DXh0bh3qo7v_m6SuHjsmXxAE6E7AXeG3kiEsJckHIrXQYu1Prq_XwvVnEY_JC52n0lCF8CizQn40UxqXgXUNhTmklXyFDwG6d-EjIklMh-69sf9QaD0_7Pbpz3kOBZAl5kXsedFLvHaakBUBo_XCtOIod7_KjG8v2kP9SewFZeAIUzi-7F2Kix7XQGbjFLqlH512jwkZItWt5eUJsIirFIM6TOmadNMkJBM">
+</div>
+<div>
+<p class="font-headline-md text-[18px] text-primary">Silk Oxford Shirt</p>
+<p class="font-label-sm text-label-sm text-secondary uppercase">Optical White</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-6 font-body-md text-secondary">Tops</td>
+<td class="px-6 py-6 font-label-md text-label-md text-outline">TP-SS24-SILK-08</td>
+<td class="px-6 py-6 text-center">
+<span class="px-3 py-1 font-label-sm text-label-sm border border-outline text-secondary">42 IN STOCK</span>
+</td>
+<td class="px-6 py-6 font-label-md text-label-md text-primary text-right">$345.00</td>
+<td class="px-6 py-6">
+<div class="flex justify-center gap-4 text-outline group-hover:text-primary transition-colors">
+<a href="editproduct.html"><button class="material-symbols-outlined hover:scale-110 transition-transform" data-icon="edit">edit</button></a>
+<button class="material-symbols-outlined hover:text-error hover:scale-110 transition-transform" data-icon="delete">delete</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-6">
+<div class="flex items-center gap-4">
+<div class="w-20 h-24 bg-surface-container-high border border-outline-variant flex-shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A pair of high-waisted tailored trousers in deep indigo navy, displayed as an artistic flat-lay on a bone-colored marble background. The fabric has a subtle sheen, indicating high-quality wool-mohair blend. Elegant composition with high contrast and sharp focus on the waist detail and fabric texture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDI9AFWYkb8Cauusukm6YnU2vH8JmmsNe_jg08ejF4KQuy9J8noAfnfG_ueUOLObZpTbzgGHJx65srII2UPFPzsmHMUMq8k71q0TB0pkb3n9Di0tl2AUAqogY0OtzO3JLeTttWtaZh6vHrju0vQt-lSHJodNWHVE3cPCZXPXj6cwc6adl_QH6dylf2HZvf5hhAawSwH4qBwcLaA_TyMHp4wI0sHdqEN0tv1uuRGQxqrfAwMzOC1IfDM4vvjthFeAkAwmrgvsa2mb0w">
+</div>
+<div>
+<p class="font-headline-md text-[18px] text-primary">Wool Trousers</p>
+<p class="font-label-sm text-label-sm text-secondary uppercase">Indigo Navy</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-6 font-body-md text-secondary">Bottoms</td>
+<td class="px-6 py-6 font-label-md text-label-md text-outline">TP-AW24-WOOL-15</td>
+<td class="px-6 py-6 text-center">
+<span class="px-3 py-1 font-label-sm text-label-sm border border-error text-error">LOW STOCK: 3</span>
+</td>
+<td class="px-6 py-6 font-label-md text-label-md text-primary text-right">$480.00</td>
+<td class="px-6 py-6">
+<div class="flex justify-center gap-4 text-outline group-hover:text-primary transition-colors">
+<a href="editproduct.html"><button class="material-symbols-outlined hover:scale-110 transition-transform" data-icon="edit">edit</button></a>
+<button class="material-symbols-outlined hover:text-error hover:scale-110 transition-transform" data-icon="delete">delete</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-6">
+<div class="flex items-center gap-4">
+<div class="w-20 h-24 bg-surface-container-high border border-outline-variant flex-shrink-0 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A black luxury leather tote bag with minimal gold hardware, positioned in a high-contrast shadow-heavy setting. The leather grain is highly detailed and rich. The atmosphere is exclusive and sophisticated, following a monochrome boutique aesthetic with dramatic directional lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeM5g4lC6Veb6ANjYpc17TylMZzWrWK-cJaK3h4szbLzNDQiWpLwkKkSSYvOrAi1Fhl248CPTl_cD_FzLzkUbAVPxfdPPPJ5KpeF4pkkSmUCWEiKJRey9vs6miM6P4-lER5B_O8CquSjK8ja7CA-tTG5y0t8mg3IZ9uNXYzkENlI8HfvQxKuDWxhUiLNXAtfD_JiYzL0IWSFr_8ZwjnNcC961Ib7s820ja8fp9HzlWz0a-49_0PCbcVCmTGSDN-BkPQTbVOoroE2g">
+</div>
+<div>
+<p class="font-headline-md text-[18px] text-primary">Leather Tote Bag</p>
+<p class="font-label-sm text-label-sm text-secondary uppercase">Noir Black</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-6 font-body-md text-secondary">Accessories</td>
+<td class="px-6 py-6 font-label-md text-label-md text-outline">TP-ACC-LEAT-04</td>
+<td class="px-6 py-6 text-center">
+<span class="px-3 py-1 font-label-sm text-label-sm border border-outline text-secondary">18 IN STOCK</span>
+</td>
+<td class="px-6 py-6 font-label-md text-label-md text-primary text-right">$890.00</td>
+<td class="px-6 py-6">
+<div class="flex justify-center gap-4 text-outline group-hover:text-primary transition-colors">
+<a href="editproduct.html"><button class="material-symbols-outlined hover:scale-110 transition-transform" data-icon="edit">edit</button></a>
+<button class="material-symbols-outlined hover:text-error hover:scale-110 transition-transform" data-icon="delete">delete</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination/Footer -->
+<div class="mt-stack-md flex justify-between items-center px-6">
+<p class="font-label-sm text-label-sm text-secondary uppercase">Showing 1-4 of 128 products</p>
+<div class="flex gap-4">
+<button class="font-label-md text-label-md text-outline hover:text-primary transition-colors disabled:opacity-30" disabled="">PREVIOUS</button>
+<div class="flex gap-2">
+<button class="w-8 h-8 flex items-center justify-center font-label-md text-label-md border border-primary bg-primary text-on-primary">1</button>
+<button class="w-8 h-8 flex items-center justify-center font-label-md text-label-md border border-outline-variant hover:border-primary transition-colors">2</button>
+<button class="w-8 h-8 flex items-center justify-center font-label-md text-label-md border border-outline-variant hover:border-primary transition-colors">3</button>
+</div>
+<button class="font-label-md text-label-md text-primary hover:tracking-widest transition-all">NEXT</button>
+</div>
+</div>
+</div>
+<div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 my-10">
+    </div>
+</main>
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    
+        // Micro-interaction for search bar focusing
+        const searchInput = document.querySelector('.signature-input');
+        if (searchInput) {
+            searchInput.addEventListener('focus', () => {
+                searchInput.style.width = '240px';
+                searchInput.style.transition = 'width 0.3s ease';
+            });
+            searchInput.addEventListener('blur', () => {
+                if (!searchInput.value) {
+                    searchInput.style.width = '192px';
+                }
+            });
+        }
+
+        // Row hover interaction logic
+        const rows = document.querySelectorAll('tbody tr');
+        rows.forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                row.querySelector('img').style.transform = 'scale(1.05)';
+                row.querySelector('img').style.transition = 'transform 0.5s ease';
+            });
+            row.addEventListener('mouseleave', () => {
+                row.querySelector('img').style.transform = 'scale(1)';
+            });
+        });
+
+
+        $(document).ready(function() {
+    // Page load hote hi data fetch karne ke liye function call
+    fetchInventoryAJAX();
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    fetchInventory();
+});
+
+async function fetchInventory() {
+    try {
+        // api.php se data mangwana
+        const response = await fetch('api/api.php?action=fetch_all');
+        const data = await response.json();
+        
+        const tableBody = document.getElementById("inventory-data-rows");
+        tableBody.innerHTML = ""; // Purana static data clear karein
+
+        data.forEach(item => {
+            // Agar stock kam hai toh alert color dena
+            let stockClass = "text-primary";
+            if (parseInt(item.stock) <= 2) {
+                stockClass = "text-error font-bold";
+            }
+
+            const row = `
+                <tr class="hover:bg-surface-container-low transition-colors group">
+                    <td class="px-6 py-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-20 h-24 bg-surface-container-high border border-outline-variant flex-shrink-0 overflow-hidden">
+                                <img class="w-full h-full object-cover" src="${item.image_url || 'https://lh3.googleusercontent.com/aida-public/AB6AXuCgj9lhVMCiUdu8mnuT1-HLVVIRQxiwb1m3Hi3hgB0uVm61m6olOYx0RHN2vs885dIDJeCTr3L3M3GQUKjkHTc-YI6Us8FDAq2WiysM8XWy8Wk30mglcb0YsLxor6UgVrXyzXB1GB0m288khPj1iVCRG6ABTN373_xRueEAfXfB2mAQ8wSqpdPAvL_dneTqCgWyKjjozZnUn-24y9VeJEops80-26y3WUpicXV6DtNvaAKXDE_UEfBijOpKDbiXrGv96KeU3WtLRVE'}" alt="${item.item_name}">
+                            </div>
+                            <div>
+                                <p class="font-headline-md text-[18px] text-primary">${item.item_name}</p>
+                                <p class="font-label-md text-[12px] text-secondary">${item.details || ''}</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-6 py-6 font-body-md">${item.category}</td>
+                    <td class="px-6 py-6 font-body-md text-secondary">${item.sku}</td>
+                    <td class="px-6 py-6 text-center font-body-md ${stockClass}">${item.stock} Left</td>
+                    <td class="px-6 py-6 text-right font-body-md">$${parseFloat(item.price).toFixed(2)}</td>
+                    <td class="px-6 py-6 text-center">
+                        <a href="editproduct.html?id=${item.id}" class="text-[12px] font-bold uppercase underline hover:text-primary">Edit</a>
+                    </td>
+                </tr>
+            `;
+            tableBody.innerHTML += row;
+        });
+    } catch (error) {
+        console.error("Data fetch karne mein error:", error);
+    }
+}
+
+    </script>
+</body></html>

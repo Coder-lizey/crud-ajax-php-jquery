@@ -1,0 +1,367 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>ThreadPulse Boutique Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Playfair+Display:wght@500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&amp;family=Playfair+Display:wght@100..900&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#181a2c",
+                        "on-tertiary-fixed": "#241a00",
+                        "tertiary-fixed-dim": "#e9c349",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#e2e3e1",
+                        "surface-container-highest": "#e3e2e2",
+                        "surface-tint": "#5b5d72",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#cca830",
+                        "secondary-fixed": "#e2e3e1",
+                        "outline": "#77767d",
+                        "on-background": "#1b1c1c",
+                        "surface-container": "#efeded",
+                        "secondary-fixed-dim": "#c6c7c5",
+                        "error-container": "#ffdad6",
+                        "secondary": "#5d5f5d",
+                        "inverse-surface": "#303031",
+                        "primary-fixed": "#e0e0fa",
+                        "surface": "#fbf9f9",
+                        "surface-bright": "#fbf9f9",
+                        "surface-container-low": "#f5f3f3",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#82849a",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#1a1c2e",
+                        "primary-fixed-dim": "#c4c5dd",
+                        "on-secondary-container": "#636563",
+                        "tertiary": "#735c00",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#1a1c1b",
+                        "on-secondary-fixed-variant": "#454746",
+                        "on-surface": "#1b1c1c",
+                        "inverse-on-surface": "#f2f0f0",
+                        "on-surface-variant": "#46464c",
+                        "background": "#fbf9f9",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#444559",
+                        "tertiary-fixed": "#ffe088",
+                        "surface-variant": "#e3e2e2",
+                        "surface-container-high": "#e9e8e7",
+                        "surface-dim": "#dbdad9",
+                        "outline-variant": "#c7c5cd",
+                        "primary": "#010211",
+                        "on-tertiary-container": "#4f3e00",
+                        "inverse-primary": "#c4c5dd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "unit": "4px",
+                        "gutter": "24px",
+                        "stack-sm": "12px",
+                        "stack-lg": "48px",
+                        "margin-mobile": "20px",
+                        "container-max": "1440px",
+                        "stack-md": "24px",
+                        "section-gap": "96px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-md": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "body-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #fbf9f9;
+            color: #1b1c1c;
+            -webkit-font-smoothing: antialiased;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .editorial-border {
+            border-bottom: 1px solid #77767d;
+        }
+        
+        .hover-invert:hover {
+            background-color: #010211;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body class="font-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-desktop h-16 bg-surface border-b border-outline">
+<div class="flex items-center gap-8">
+<span class="font-headline-md text-headline-md text-primary tracking-tight">ThreadPulse</span>
+<div class="hidden md:flex gap-6">
+<a class="text-primary font-bold border-b-2 border-primary font-label-md text-label-md" href="dashboard.html">Dashboard</a>
+<a class="text-secondary hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="inventory.html" target="_blank">Inventory</a>
+<a class="text-secondary hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="#">Orders</a>
+<a class="text-secondary hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="#">Insights</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-2 top-1/2 -translate-y-1/2 text-secondary text-sm">search</span>
+<input class="bg-transparent border-b border-outline focus:border-primary transition-all duration-300 pl-8 pr-2 py-1 text-label-md outline-none w-48 focus:w-64" placeholder="Search Boutique..." type="text">
+</div>
+<span class="material-symbols-outlined text-primary cursor-pointer active:scale-95 transition-all" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-primary cursor-pointer active:scale-95 transition-all" data-icon="shopping_bag">shopping_bag</span>
+</div>
+</nav>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 flex flex-col py-stack-lg z-40 bg-surface border-r border-outline hidden xl:flex">
+<div class="px-6 mb-10">
+<h2 class="font-headline-md text-headline-md text-primary">Boutique Admin</h2>
+<p class="font-label-md text-label-sm text-secondary uppercase tracking-widest mt-1">Premium Management</p>
+</div>
+<div class="flex flex-col gap-1 px-4">
+<a class="flex items-center gap-3 px-4 py-3 text-primary font-bold bg-surface-container-high border-r-2 border-primary scale-[0.99] transition-transform font-label-md text-label-md" href="dashboard.html">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span> Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-low transition-all duration-300 font-label-md text-label-md" href="inventory.html">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span> Inventory
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-low transition-all duration-300 font-label-md text-label-md" href="">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span> Orders
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-low transition-all duration-300 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span> Stylist Insights
+            </a>
+</div>
+<div class="mt-auto px-4 flex flex-col gap-1">
+<button class="bg-primary text-white py-3 px-4 font-label-md text-label-md uppercase tracking-widest mb-6 hover:opacity-90 transition-opacity">
+                Add New Product
+            </button>
+<a class="flex items-center gap-3 px-4 py-2 text-secondary hover:bg-surface-container-low font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span> Settings
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-secondary hover:bg-surface-container-low font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span> Support
+            </a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="pt-16 xl:pl-64 min-h-screen">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg">
+
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-stack-lg gap-4">
+<div>
+<nav class="flex gap-2 text-label-sm font-label-sm text-secondary uppercase tracking-widest mb-2">
+<a href="#">Inventory</a>
+<span>/</span>
+<span class="text-on-surface">Edit Product</span>
+</nav>
+<h1 class="font-headline-lg text-headline-lg text-primary">Classic Silk Blouse</h1>
+</div>
+<div class="flex gap-4">
+<button class="px-8 py-3 bg-transparent border border-primary text-primary font-label-md uppercase tracking-widest hover:bg-primary hover:text-white transition-all duration-300">
+                    Discard Changes
+                </button>
+<button class="px-8 py-3 bg-primary text-white border border-primary font-label-md uppercase tracking-widest hover:bg-transparent hover:text-primary transition-all duration-300">
+                    Save Updates
+                </button>
+</div>
+</div>
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-gutter">
+<!-- Left Column: Details & Description -->
+<div class="xl:col-span-7 space-y-stack-lg">
+<!-- Information Section -->
+<section class="p-stack-md bg-white border border-outline-variant">
+<h3 class="font-label-md text-label-md uppercase tracking-widest mb-stack-md text-secondary">General Information</h3>
+<div class="space-y-stack-md">
+<div class="flex flex-col">
+<label class="font-label-sm text-label-sm uppercase text-secondary mb-1">Product Title</label>
+<input class="signature-input font-headline-md text-headline-md" type="text" value="Classic Silk Blouse">
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="flex flex-col">
+<label class="font-label-sm text-label-sm uppercase text-secondary mb-1">Price (USD)</label>
+<input class="signature-input font-body-lg text-body-lg" type="number" value="285.00">
+</div>
+<div class="flex flex-col">
+<label class="font-label-sm text-label-sm uppercase text-secondary mb-1">Stock Quantity</label>
+<input class="signature-input font-body-lg text-body-lg" type="number" value="42">
+</div>
+</div>
+<div class="flex flex-col pt-4">
+<label class="font-label-sm text-label-sm uppercase text-secondary mb-3">Product Description</label>
+<div class="border border-outline-variant p-4 min-h-[300px]">
+<!-- Minimalist Rich Text Toolbar -->
+<div class="flex gap-4 mb-4 border-b border-outline-variant pb-2">
+<button class="material-symbols-outlined text-secondary hover:text-primary">format_bold</button>
+<button class="material-symbols-outlined text-secondary hover:text-primary">format_italic</button>
+<button class="material-symbols-outlined text-secondary hover:text-primary">format_list_bulleted</button>
+<button class="material-symbols-outlined text-secondary hover:text-primary">link</button>
+</div>
+<textarea class="w-full border-none focus:ring-0 font-body-md text-body-md h-60 resize-none bg-transparent" placeholder="Describe the silk quality, fit, and care instructions...">Crafted from 100% premium mulberry silk, this Classic Silk Blouse embodies effortless luxury. Designed with a relaxed fit and a sophisticated hidden placket, it transitions seamlessly from day to evening.
+
+Key Features:
+- 22 momme heavy-weight silk
+- Mother-of-pearl buttons
+- Adjustable barrel cuffs
+- Sustainable dye process</textarea>
+</div>
+</div>
+</div>
+</section>
+<!-- Attributes Section -->
+<section class="p-stack-md bg-white border border-outline-variant">
+<h3 class="font-label-md text-label-md uppercase tracking-widest mb-stack-md text-secondary">Attributes</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="flex flex-col border border-outline-variant p-4 text-center">
+<span class="font-label-sm text-label-sm text-secondary uppercase">XS</span>
+<span class="font-body-md mt-2">12 in stock</span>
+</div>
+<div class="flex flex-col border border-primary p-4 text-center bg-primary text-white">
+<span class="font-label-sm text-label-sm uppercase">S</span>
+<span class="font-body-md mt-2">8 in stock</span>
+</div>
+<div class="flex flex-col border border-outline-variant p-4 text-center">
+<span class="font-label-sm text-label-sm text-secondary uppercase">M</span>
+<span class="font-body-md mt-2">15 in stock</span>
+</div>
+<div class="flex flex-col border border-outline-variant p-4 text-center">
+<span class="font-label-sm text-label-sm text-secondary uppercase">L</span>
+<span class="font-body-md mt-2">7 in stock</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Gallery & Upload -->
+<div class="xl:col-span-5 space-y-stack-lg">
+<section class="p-stack-md bg-white border border-outline-variant">
+<div class="flex justify-between items-center mb-stack-md">
+<h3 class="font-label-md text-label-md uppercase tracking-widest text-secondary">Product Gallery</h3>
+<button class="text-primary font-label-sm uppercase flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-sm">add</span> Add Image
+                        </button>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<!-- Image 1 -->
+<div class="relative group aspect-[4/5] overflow-hidden border border-outline-variant image-card">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A high-end editorial studio photograph of a premium white silk blouse displayed on a minimalist background. The lighting is soft and directional, highlighting the luxurious drape and subtle sheen of the mulberry silk. The composition is clean and focused, capturing the garment's elegance in a bright, modern light-mode boutique aesthetic with a monochromatic palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmS_rE4HkUacrkjqMfyRB6XGc8H0ehCTe9WSv-BhXeV227I5r5C1dkUBSUTvkSuLgewUb366IXQfSMxFMbdca828kAMyHYi2LIZPwIHCO2RORlBrxr2hrSkhwfkBqo6mZk8-sWMsMhaslBPoasF0_cFPbOZIVSmFc5pm7sw6_rdMp5gq4V6V9QoLPRw0-hUq3qizdDXF8KYKFDdtgdv0Jfa0tFuSmEnd9GvHSd6ySPFDFx410WuCd3_1uOo3PutlOg9a04qMol_xA">
+<div class="delete-overlay absolute inset-0 bg-primary/20 opacity-0 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
+<button class="w-12 h-12 bg-white text-primary flex items-center justify-center hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<!-- Image 2 -->
+<div class="relative group aspect-[4/5] overflow-hidden border border-outline-variant image-card">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Close-up detail shot of a classic silk blouse cuff and mother-of-pearl buttons. The image captures the intricate stitching and fine fabric texture under soft, natural daylight. The mood is intimate and exclusive, emphasizing high-end craftsmanship. The color story remains neutral and sophisticated with ivory tones against a minimalist grey shadow background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyKBC8MTDqB2C1MpmMHU7gzyK7nz2VP_55g7URfkCtUnjLrSJN9DKP8YNpnqUP6OgdgDJGYI8fDRm0XtJiFutukIjzDUt2q1njhwPRKoVaZ2YHgbnP9Sc5q1AZ-lK0GZdSipKlY-oCHIaTIoYSZbMuxsgAq9DNK5WO7JgY0MSIhxFUgh5EbCMFd7GtTaH5ViIz17pAeUYKRhjQwsDSoRIyVC1eZR38jUNrvt_5qK85KQuoIf90q35yG7T9NV9_ONLeGp-NgaJSnHc">
+<div class="delete-overlay absolute inset-0 bg-primary/20 opacity-0 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
+<button class="w-12 h-12 bg-white text-primary flex items-center justify-center hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<!-- Image 3 -->
+<div class="relative group aspect-[4/5] overflow-hidden border border-outline-variant image-card">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A minimalist lookbook style photograph showing the back view of a silk blouse on a mannequin. The garment features a subtle box pleat that emphasizes its relaxed but structured fit. The setting is a bright, white-walled gallery with a polished concrete floor, maintaining a high-fashion digital flagship aesthetic with deep blacks and ivory whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfGhRU3o-lRcd15pIHjDbkh_GI0eGHUhIDA0lr_E5PjgwT_tY3fpWHCPCZMquC78uhNYAK7Pdp8Kk0wB6lpIJupVqD04qI1HW_g6ZbymcgUJhg0ftC_rFZ7A7_r1MiJdoyXOqVP9PkLFpOiGoxubY6plgAqfFgfOTD8CsGaEt8RP9H5wxtm_EiVOz4l41Qi6QcMcbP-NrQoGMXgW_5b1Aw9kdPdqpOm-MqWjEZWAdoYOhd6Ae1Zal39_2Mfm-fUdGDVSi99UBQ9T8">
+<div class="delete-overlay absolute inset-0 bg-primary/20 opacity-0 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
+<button class="w-12 h-12 bg-white text-primary flex items-center justify-center hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<!-- Upload Placeholder -->
+<div class="border-2 border-dashed border-outline-variant aspect-[4/5] flex flex-col items-center justify-center text-secondary hover:border-primary hover:text-primary cursor-pointer transition-colors group">
+<span class="material-symbols-outlined text-4xl mb-2 group-hover:scale-110 transition-transform">cloud_upload</span>
+<span class="font-label-sm uppercase tracking-wider">Upload New</span>
+</div>
+</div>
+</section>
+<section class="p-stack-md bg-surface-container-low border border-outline-variant">
+<h3 class="font-label-md text-label-md uppercase tracking-widest mb-stack-md text-secondary">Status &amp; Visibility</h3>
+<div class="space-y-4">
+<div class="flex justify-between items-center py-2 border-b border-outline-variant">
+<span class="font-body-md">Published on Store</span>
+<button class="w-12 h-6 bg-primary rounded-full relative transition-colors">
+<div class="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></div>
+</button>
+</div>
+<div class="flex justify-between items-center py-2 border-b border-outline-variant">
+<span class="font-body-md">Editorial Feature</span>
+<button class="w-12 h-6 bg-secondary-fixed rounded-full relative transition-colors">
+<div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full"></div>
+</button>
+</div>
+<div class="flex justify-between items-center py-2">
+<span class="font-body-md">Inventory Alert Level</span>
+<span class="font-label-md">5 units</span>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Success Toast (Hidden) -->
+<div class="fixed bottom-10 right-margin-desktop bg-primary text-white px-8 py-4 opacity-0 translate-y-10 transition-all duration-500 z-[100] flex items-center gap-4" id="save-toast">
+<span class="material-symbols-outlined">check_circle</span>
+<span class="font-label-md uppercase tracking-widest">Changes Saved Successfully</span>
+</div>
+</div>
+<script>
+        // Micro-interaction for the "Save Updates" button
+        document.querySelectorAll('button').forEach(btn => {
+            if (btn.innerText.includes('SAVE UPDATES')) {
+                btn.addEventListener('click', () => {
+                    btn.classList.add('opacity-80', 'scale-95');
+                    setTimeout(() => {
+                        btn.classList.remove('opacity-80', 'scale-95');
+                        const toast = document.getElementById('save-toast');
+                        toast.classList.remove('opacity-0', 'translate-y-10');
+                        setTimeout(() => {
+                            toast.classList.add('opacity-0', 'translate-y-10');
+                        }, 3000);
+                    }, 200);
+                });
+            }
+        });
+
+        // Simple Toggle interaction
+        document.querySelectorAll('button.rounded-full').forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const dot = toggle.querySelector('div');
+                if (toggle.classList.contains('bg-primary')) {
+                    toggle.classList.replace('bg-primary', 'bg-secondary-fixed');
+                    dot.classList.replace('right-1', 'left-1');
+                } else {
+                    toggle.classList.replace('bg-secondary-fixed', 'bg-primary');
+                    dot.classList.replace('left-1', 'right-1');
+                }
+            });
+        });
+    </script>
+</body></html>

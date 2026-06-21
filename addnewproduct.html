@@ -1,0 +1,415 @@
+
+
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>ThreadPulse Boutique Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Playfair+Display:wght@500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&amp;family=Playfair+Display:wght@100..900&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#181a2c",
+                        "on-tertiary-fixed": "#241a00",
+                        "tertiary-fixed-dim": "#e9c349",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#e2e3e1",
+                        "surface-container-highest": "#e3e2e2",
+                        "surface-tint": "#5b5d72",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#cca830",
+                        "secondary-fixed": "#e2e3e1",
+                        "outline": "#77767d",
+                        "on-background": "#1b1c1c",
+                        "surface-container": "#efeded",
+                        "secondary-fixed-dim": "#c6c7c5",
+                        "error-container": "#ffdad6",
+                        "secondary": "#5d5f5d",
+                        "inverse-surface": "#303031",
+                        "primary-fixed": "#e0e0fa",
+                        "surface": "#fbf9f9",
+                        "surface-bright": "#fbf9f9",
+                        "surface-container-low": "#f5f3f3",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#82849a",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#1a1c2e",
+                        "primary-fixed-dim": "#c4c5dd",
+                        "on-secondary-container": "#636563",
+                        "tertiary": "#735c00",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#1a1c1b",
+                        "on-secondary-fixed-variant": "#454746",
+                        "on-surface": "#1b1c1c",
+                        "inverse-on-surface": "#f2f0f0",
+                        "on-surface-variant": "#46464c",
+                        "background": "#fbf9f9",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#444559",
+                        "tertiary-fixed": "#ffe088",
+                        "surface-variant": "#e3e2e2",
+                        "surface-container-high": "#e9e8e7",
+                        "surface-dim": "#dbdad9",
+                        "outline-variant": "#c7c5cd",
+                        "primary": "#010211",
+                        "on-tertiary-container": "#4f3e00",
+                        "inverse-primary": "#c4c5dd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "unit": "4px",
+                        "gutter": "24px",
+                        "stack-sm": "12px",
+                        "stack-lg": "48px",
+                        "margin-mobile": "20px",
+                        "container-max": "1440px",
+                        "stack-md": "24px",
+                        "section-gap": "96px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-md": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "body-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #fbf9f9;
+            color: #1b1c1c;
+            -webkit-font-smoothing: antialiased;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .editorial-border {
+            border-bottom: 1px solid #77767d;
+        }
+        
+        .hover-invert:hover {
+            background-color: #010211;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body class="font-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-desktop h-16 bg-surface border-b border-outline">
+<div class="flex items-center gap-8">
+<span class="font-headline-md text-headline-md text-primary tracking-tight">ThreadPulse</span>
+<div class="hidden md:flex gap-6">
+<a class="text-primary font-bold border-b-2 border-primary font-label-md text-label-md" href="dashboard.html">Dashboard</a>
+<a class="text-secondary hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="inventory.html" target="">Inventory</a>
+<a class="text-secondary hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="#">Orders</a>
+<a class="text-secondary hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="#">Insights</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-2 top-1/2 -translate-y-1/2 text-secondary text-sm">search</span>
+<input class="bg-transparent border-b border-outline focus:border-primary transition-all duration-300 pl-8 pr-2 py-1 text-label-md outline-none w-48 focus:w-64" placeholder="Search Boutique..." type="text">
+</div>
+<span class="material-symbols-outlined text-primary cursor-pointer active:scale-95 transition-all" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-primary cursor-pointer active:scale-95 transition-all" data-icon="shopping_bag">shopping_bag</span>
+</div>
+</nav>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 flex flex-col py-stack-lg z-40 bg-surface border-r border-outline hidden xl:flex">
+<div class="px-6 mb-10">
+<h2 class="font-headline-md text-headline-md text-primary">Boutique Admin</h2>
+<p class="font-label-md text-label-sm text-secondary uppercase tracking-widest mt-1">Premium Management</p>
+</div>
+<div class="flex flex-col gap-1 px-4">
+<a class="flex items-center gap-3 px-4 py-3 text-primary font-bold bg-surface-container-high border-r-2 border-primary scale-[0.99] transition-transform font-label-md text-label-md" href="dashboard.html">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span> Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-low transition-all duration-300 font-label-md text-label-md" href="inventory.html">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span> Inventory
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-low transition-all duration-300 font-label-md text-label-md" href="">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span> Orders
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-low transition-all duration-300 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span> Stylist Insights
+            </a>
+</div>
+<div class="mt-auto px-4 flex flex-col gap-1">
+
+<a class="flex items-center gap-3 px-4 py-2 text-secondary hover:bg-surface-container-low font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span> Settings
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-secondary hover:bg-surface-container-low font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span> Support
+            </a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="pt-16 xl:pl-64 min-h-screen">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg">
+<header class="mb-stack-lg flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+<div>
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary leading-tight">Add New Product</h2>
+<p class="font-body-lg text-body-lg text-secondary max-w-xl mt-4">Introduce a new masterpiece to the curated ThreadPulse collection. Precision and detail define our luxury experience.</p>
+</div>
+<div class="flex gap-4">
+<button class="px-8 py-3 border border-primary text-primary font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-all duration-300">CANCEL</button>
+<button id="savebtn" class="px-8 py-3 bg-primary text-on-primary font-label-md text-label-md hover:opacity-90 transition-all duration-300">PUBLISH</button>
+</div>
+</header>
+<form id="productForm" enctype="multipart/form-data" class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-start">
+<!-- Left Column: Media & Visuals -->
+<div class="md:col-span-5 space-y-stack-md">
+    <div class="group relative overflow-hidden bg-surface-container-low border border-outline-variant p-6 transition-all duration-500 hover:border-primary">
+        <label class="block text-center cursor-pointer">
+            <input class="hidden" id="file-upload" name="images[]" multiple type="file" accept="image/*">
+            <div class="flex flex-col items-center justify-center space-y-4 py-6" id="drop-zone">
+                <span class="material-symbols-outlined text-4xl text-secondary group-hover:text-primary transition-colors">cloud_upload</span>
+                <div>
+                    <p class="font-bold text-primary uppercase">Upload Images</p>
+                    <p class="font-label-sm text-label-sm text-secondary mt-1">Drag and drop or browse gallery</p>
+                </div>
+                <p class="text-xs text-gray-400 pt-2">High-resolution portrait (4:5) recommended</p>
+            </div>
+        </label>
+    </div>
+
+    <div id="preview-container" class="grid grid-cols-3 gap-2">
+        </div>
+</div>
+<!-- Right Column: Details -->
+<div class="md:col-span-7 space-y-stack-md">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<div class="space-y-unit">
+<label class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Product Name</label>
+<input name="name" required class="w-full bg-transparent border-0 border-b border-outline-variant py-2 px-0 text-body-md font-body-md placeholder:text-outline-variant" placeholder="e.g. Silk Drape Midi" type="text">
+</div>
+<div class="space-y-unit">
+<label  class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Brand</label>
+<input name="brand" required class="w-full bg-transparent border-0 border-b border-outline-variant py-2 px-0 text-body-md font-body-md placeholder:text-outline-variant" placeholder="e.g. Atelier Noir" type="text">
+</div>
+</div>
+<div class="space-y-unit">
+<label class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Description</label>
+<textarea name="description" class="w-full bg-transparent border-0 border-b border-outline-variant py-2 px-0 text-body-md font-body-md placeholder:text-outline-variant resize-none" placeholder="Describe the silhouette, fabric composition, and stylistic intent..." rows="4"></textarea>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<div class="space-y-unit">
+<label class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Category</label>
+<select name="category" class="w-full bg-transparent border-0 border-b border-outline-variant py-2 px-0 focus:ring-0 focus:border-primary">
+                                <option value="">Select Category</option>
+                                <option value="Outerwear">Outerwear</option>
+                                <option value="Dresses">Dresses</option>
+                                <option value="Knitwear">Knitwear</option>
+                                <option value="Accessories">Accessories</option>
+                            </select>
+</div>
+<div class="space-y-unit">
+<label class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Price (USD)</label>
+<input name="price" required class="w-full bg-transparent border-0 border-b border-outline-variant py-2 px-0 text-body-md font-body-md placeholder:text-outline-variant" placeholder="0.00" type="number">
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md pt-4">
+    <div class="space-y-unit">
+        <label class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">SKU Code</label>
+        <input name="sku" required class="w-full bg-transparent border-0 border-b border-outline-variant py-2 px-0 text-body-md font-body-md placeholder:text-outline-variant focus:ring-0 focus:border-primary" placeholder="e.g. TP-AW24-CASH-01" type="text">
+    </div>
+    <div class="space-y-unit">
+        <label class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Initial Stock Quantity</label>
+        <input name="stock" required class="w-full bg-transparent border-0 border-b border-outline-variant py-2 px-0 text-body-md font-body-md placeholder:text-outline-variant focus:ring-0 focus:border-primary" placeholder="e.g. 15" type="number" min="0">
+    </div>
+</div>
+<div class="space-y-stack-sm pt-4">
+<label class="font-label-sm text-label-sm text-secondary uppercase tracking-widest block mb-2">Available Sizes</label>
+<div class="flex flex-wrap gap-3">
+<div class="flex flex-wrap gap-3">
+                            <label class="cursor-pointer"><input name="sizes" value="XS" class="hidden peer" type="checkbox"><span class="w-12 h-12 flex items-center justify-center border border-outline-variant peer-checked:bg-primary peer-checked:text-white transition-all">XS</span></label>
+                            <label class="cursor-pointer"><input name="sizes" value="S" class="hidden peer" type="checkbox"><span class="w-12 h-12 flex items-center justify-center border border-outline-variant peer-checked:bg-primary peer-checked:text-white transition-all">S</span></label>
+                            <label class="cursor-pointer"><input name="sizes" value="M" class="hidden peer" type="checkbox"><span class="w-12 h-12 flex items-center justify-center border border-outline-variant peer-checked:bg-primary peer-checked:text-white transition-all">M</span></label>
+                            <label class="cursor-pointer"><input name="sizes" value="L" class="hidden peer" type="checkbox"><span class="w-12 h-12 flex items-center justify-center border border-outline-variant peer-checked:bg-primary peer-checked:text-white transition-all">L</span></label>
+                            <label class="cursor-pointer"><input name="sizes" value="XL" class="hidden peer" type="checkbox"><span class="w-12 h-12 flex items-center justify-center border border-outline-variant peer-checked:bg-primary peer-checked:text-white transition-all">XL</span></label>
+                              </div>
+                            
+
+</div>
+</div>
+<div class="space-y-unit pt-4">
+<label class="font-label-sm text-label-sm text-secondary uppercase tracking-widest block">Primary Color</label>
+<div class="flex items-center gap-4 py-2 border-b border-outline-variant">
+                            <input name="colorHex" class="w-8 h-8 border-none bg-transparent cursor-pointer" type="color" value="#010211">
+                            <input name="colorName" class="flex-1 bg-transparent border-none py-0 px-0 focus:ring-0" placeholder="Color Name (e.g. Midnight Charcoal)" type="text">
+</div>
+</div>
+</div>
+</form>
+<!-- Footer Narrative Section -->
+<section class="mt-section-gap pt-stack-lg border-t border-outline-variant opacity-60">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-stack-md">
+<div>
+<h4 class="font-label-md text-label-md text-primary uppercase mb-2">Quality Standard</h4>
+<p class="font-body-md text-body-md text-secondary">All products undergo a rigorous 48-hour curation review before appearing in the public feed.</p>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary uppercase mb-2">Imagery Policy</h4>
+<p class="font-body-md text-body-md text-secondary">Ensure studio lighting and a clean backdrop to maintain the ThreadPulse editorial aesthetic.</p>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary uppercase mb-2">Global Shipping</h4>
+<p class="font-body-md text-body-md text-secondary">Price inclusive of initial luxury packaging for our discerning global clientele.</p>
+</div>
+</div>
+</section>
+</div>
+</main>
+</div>
+<!-- Interaction Script -->
+<script>
+      const fileInput = document.getElementById('file-upload');
+const previewContainer = document.getElementById('preview-container');
+const saveBtn = document.getElementById('savebtn');
+const productForm = document.getElementById('productForm');
+
+// Global Array jo actual final files track karegi
+let selectedFiles = [];
+
+// 1. Image Selection and Rendering Logic
+fileInput.addEventListener('change', (e) => {
+    const newFiles = Array.from(e.target.files);
+    
+    // Nayi select ki hui files ko purani array me add karna
+    selectedFiles = [...selectedFiles, ...newFiles];
+    
+    renderPreviews();
+});
+
+// 2. Render Grid System Function
+function renderPreviews() {
+    previewContainer.innerHTML = ''; // Pehle container khali karein
+
+    selectedFiles.forEach((file, index) => {
+        const reader = new FileReader();
+        
+        reader.onload = (event) => {
+            const div = document.createElement('div');
+            div.className = 'aspect-[4/5] bg-gray-100 relative group rounded overflow-hidden shadow-sm border border-gray-200';
+            
+            // Premium structure with exact template styling matching your system
+            div.innerHTML = `
+                <img src="${event.target.result}" class="w-full h-full object-cover transition-all duration-300">
+                <button type="button" onclick="removeImage(${index})" class="absolute top-2 right-2 bg-primary text-white bg-opacity-70 backdrop-blur-md p-1 rounded-full hover:bg-opacity-100 transition-all active:scale-90 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-sm font-bold">close</span>
+                </button>
+            `;
+            
+            previewContainer.appendChild(div);
+        };
+        
+        reader.readAsDataURL(file);
+    });
+
+    // Elegant placeholder blocks render karna agar 3 se kam images hon (Jaise aapke UI design me tha)
+    const remainingSlots = 3 - selectedFiles.length;
+    for (let i = 0; i < remainingSlots; i++) {
+        const placeholder = document.createElement('div');
+        placeholder.className = 'aspect-[4/5] bg-surface-container-high flex items-center justify-center border border-dashed border-outline-variant rounded opacity-60';
+        placeholder.innerHTML = `<span class="material-symbols-outlined text-outline-variant">add</span>`;
+        previewContainer.appendChild(placeholder);
+    }
+}
+
+// 3. Dynamic Remove Functionality (Cross button behavior)
+window.removeImage = function(indexToRemove) {
+    // Array se specific index wali file delete karna
+    selectedFiles = selectedFiles.filter((_, index) => index !== indexToRemove);
+    
+    // UI Refresh karna
+    renderPreviews();
+};
+
+// Initial empty slots display setup
+renderPreviews();
+
+// ==========================================
+// 4. Form Submit AJAX Update
+// ==========================================
+saveBtn.addEventListener('click', async () => {
+    if(!productForm.checkValidity()) {
+        productForm.reportValidity();
+        return;
+    }
+
+    saveBtn.innerText = "PUBLISHING...";
+    saveBtn.disabled = true;
+
+    // Form data bundle initialize karein
+    const formData = new FormData(productForm);
+
+    // CRITICAL FIX: input parameter 'images[]' clear karna taaki custom filtered selectedFiles ja saken
+    formData.delete('images[]'); 
+    
+    // Sirf wahi files append hongi jo cross button se bachi hain
+    selectedFiles.forEach(file => {
+        formData.append('images[]', file);
+    });
+
+    // Sizes arrays validation check 
+    const checkedSizes = [];
+    document.querySelectorAll('input[name="sizes"]:checked').forEach(cb => {
+        checkedSizes.push(cb.value);
+    });
+    formData.set('sizes', JSON.stringify(checkedSizes));
+
+    try {
+        const response = await fetch('api/api.php', { 
+            method: 'POST', 
+            body: formData 
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+            alert('Mubarak ho! ' + result.message);
+            productForm.reset();
+            selectedFiles = [];
+            renderPreviews();
+            window.location.href = 'inventory.html';
+        } else {
+            alert('Error: ' + result.message);
+        }
+    } catch (error) {
+        console.error("AJAX Error:", error);
+        alert('Server validation issue or offline error.');
+    } finally {
+        saveBtn.innerText = "PUBLISH";
+        saveBtn.disabled = false;
+    }
+});
+    </script>
+</body></html>

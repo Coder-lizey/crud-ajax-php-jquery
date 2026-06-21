@@ -1,0 +1,387 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>ThreadPulse Boutique Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Playfair+Display:wght@500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&amp;family=Playfair+Display:wght@100..900&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#181a2c",
+                        "on-tertiary-fixed": "#241a00",
+                        "tertiary-fixed-dim": "#e9c349",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#e2e3e1",
+                        "surface-container-highest": "#e3e2e2",
+                        "surface-tint": "#5b5d72",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#cca830",
+                        "secondary-fixed": "#e2e3e1",
+                        "outline": "#77767d",
+                        "on-background": "#1b1c1c",
+                        "surface-container": "#efeded",
+                        "secondary-fixed-dim": "#c6c7c5",
+                        "error-container": "#ffdad6",
+                        "secondary": "#5d5f5d",
+                        "inverse-surface": "#303031",
+                        "primary-fixed": "#e0e0fa",
+                        "surface": "#fbf9f9",
+                        "surface-bright": "#fbf9f9",
+                        "surface-container-low": "#f5f3f3",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#82849a",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#1a1c2e",
+                        "primary-fixed-dim": "#c4c5dd",
+                        "on-secondary-container": "#636563",
+                        "tertiary": "#735c00",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#1a1c1b",
+                        "on-secondary-fixed-variant": "#454746",
+                        "on-surface": "#1b1c1c",
+                        "inverse-on-surface": "#f2f0f0",
+                        "on-surface-variant": "#46464c",
+                        "background": "#fbf9f9",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#444559",
+                        "tertiary-fixed": "#ffe088",
+                        "surface-variant": "#e3e2e2",
+                        "surface-container-high": "#e9e8e7",
+                        "surface-dim": "#dbdad9",
+                        "outline-variant": "#c7c5cd",
+                        "primary": "#010211",
+                        "on-tertiary-container": "#4f3e00",
+                        "inverse-primary": "#c4c5dd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "unit": "4px",
+                        "gutter": "24px",
+                        "stack-sm": "12px",
+                        "stack-lg": "48px",
+                        "margin-mobile": "20px",
+                        "container-max": "1440px",
+                        "stack-md": "24px",
+                        "section-gap": "96px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-md": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "body-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #fbf9f9;
+            color: #1b1c1c;
+            -webkit-font-smoothing: antialiased;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .editorial-border {
+            border-bottom: 1px solid #77767d;
+        }
+        
+        .hover-invert:hover {
+            background-color: #010211;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body class="font-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-desktop h-16 bg-surface border-b border-outline">
+<div class="flex items-center gap-8">
+<span class="font-headline-md text-headline-md text-primary tracking-tight">ThreadPulse</span>
+<div class="hidden md:flex gap-6">
+<a class="text-primary font-bold border-b-2 border-primary font-label-md text-label-md" href="dashboard.html">Dashboard</a>
+<a class="text-secondary hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="inventory.html" >Inventory</a>
+<a class="text-secondary hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="#">Orders</a>
+<a class="text-secondary hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="#">Insights</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-2 top-1/2 -translate-y-1/2 text-secondary text-sm">search</span>
+<input class="bg-transparent border-b border-outline focus:border-primary transition-all duration-300 pl-8 pr-2 py-1 text-label-md outline-none w-48 focus:w-64" placeholder="Search Boutique..." type="text">
+</div>
+<span class="material-symbols-outlined text-primary cursor-pointer active:scale-95 transition-all" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-primary cursor-pointer active:scale-95 transition-all" data-icon="shopping_bag">shopping_bag</span>
+</div>
+</nav>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 flex flex-col py-stack-lg z-40 bg-surface border-r border-outline hidden xl:flex">
+<div class="px-6 mb-10">
+<h2 class="font-headline-md text-headline-md text-primary">Boutique Admin</h2>
+<p class="font-label-md text-label-sm text-secondary uppercase tracking-widest mt-1">Premium Management</p>
+</div>
+<div class="flex flex-col gap-1 px-4">
+<a class="flex items-center gap-3 px-4 py-3 text-primary font-bold bg-surface-container-high border-r-2 border-primary scale-[0.99] transition-transform font-label-md text-label-md" href="dashboard.html">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span> Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-low transition-all duration-300 font-label-md text-label-md" href="inventory.html">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span> Inventory
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-low transition-all duration-300 font-label-md text-label-md" href="">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span> Orders
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary hover:bg-surface-container-low transition-all duration-300 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span> Stylist Insights
+            </a>
+</div>
+<div class="mt-auto px-4 flex flex-col gap-1">
+<button class="bg-primary text-white py-3 px-4 font-label-md text-label-md uppercase tracking-widest mb-6 hover:opacity-90 transition-opacity">
+                Add New Product
+            </button>
+<a class="flex items-center gap-3 px-4 py-2 text-secondary hover:bg-surface-container-low font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span> Settings
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-secondary hover:bg-surface-container-low font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span> Support
+            </a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="pt-16 xl:pl-64 min-h-screen">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg">
+<!-- Header Section -->
+<header class="mb-section-gap flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<span class="font-label-md text-label-sm text-secondary uppercase tracking-[0.2em]">Overview</span>
+<h1 class="font-headline-lg text-headline-lg text-primary mt-2">Executive Summary</h1>
+</div>
+<div class="flex gap-4">
+<div class="px-6 py-3 border border-outline flex flex-col min-w-[160px]">
+<span class="font-label-md text-[10px] text-secondary uppercase">Inventory Value</span>
+<span class="font-headline-md text-headline-md text-primary">$1,248,000.00</span>
+</div>
+<div class="px-6 py-3 border border-outline flex flex-col min-w-[160px] bg-primary text-white">
+<span class="font-label-md text-[10px] opacity-70 uppercase">Daily Revenue</span>
+<span class="font-headline-md text-headline-md">$14,502.20</span>
+</div>
+</div>
+</header>
+<!-- Grid Layout -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Latest Sales Trends (High-end Line Chart Placeholder) -->
+<section class="col-span-12 lg:col-span-8 bg-white border border-outline-variant p-stack-md flex flex-col">
+<div class="flex justify-between items-center mb-10">
+<h3 class="font-headline-md text-headline-md">Latest Sales Trends</h3>
+<div class="flex gap-4">
+<button class="font-label-md text-label-sm text-primary underline">WEEKLY</button>
+<button class="font-label-md text-label-sm text-secondary hover:text-primary transition-colors">MONTHLY</button>
+</div>
+</div>
+<div class="relative h-64 w-full flex items-end justify-between px-2 overflow-hidden">
+<!-- Pure CSS Minimalist Chart -->
+<div class="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none">
+<span class="font-headline-lg text-[120px] text-primary select-none">PULSE</span>
+</div>
+<svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 800 200">
+<path d="M0,180 Q100,160 200,100 T400,120 T600,40 T800,80" fill="none" stroke="#010211" stroke-width="1.5"></path>
+<circle cx="200" cy="100" fill="#010211" r="4"></circle>
+<circle cx="400" cy="120" fill="#010211" r="4"></circle>
+<circle cx="600" cy="40" fill="#010211" r="4"></circle>
+</svg>
+<div class="absolute bottom-0 left-0 w-full h-[1px] bg-outline-variant"></div>
+</div>
+<div class="flex justify-between mt-4">
+<span class="font-label-md text-[10px] text-secondary">MON</span>
+<span class="font-label-md text-[10px] text-secondary">TUE</span>
+<span class="font-label-md text-[10px] text-secondary">WED</span>
+<span class="font-label-md text-[10px] text-secondary">THU</span>
+<span class="font-label-md text-[10px] text-secondary">FRI</span>
+<span class="font-label-md text-[10px] text-secondary">SAT</span>
+<span class="font-label-md text-[10px] text-secondary">SUN</span>
+</div>
+</section>
+<!-- Low Stock Alerts -->
+<section class="col-span-12 lg:col-span-4 bg-surface-container-low p-stack-md border border-outline-variant">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-error" data-icon="error_outline">error_outline</span>
+<h3 class="font-headline-md text-headline-md">Inventory Alerts</h3>
+</div>
+<div class="flex flex-col gap-4">
+<div class="editorial-border pb-4 flex justify-between items-center">
+<div>
+<p class="font-label-md text-label-md text-primary">Silk Drape Blouse</p>
+<p class="font-label-md text-[10px] text-secondary">Ivory / Size M</p>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md text-error">2 Left</p>
+<button class="text-[10px] font-bold uppercase underline">Restock</button>
+</div>
+</div>
+<div class="editorial-border pb-4 flex justify-between items-center">
+<div>
+<p class="font-label-md text-label-md text-primary">Cashmere Overcoat</p>
+<p class="font-label-md text-[10px] text-secondary">Charcoal / Size L</p>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md text-error">1 Left</p>
+<button class="text-[10px] font-bold uppercase underline">Restock</button>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<div>
+<p class="font-label-md text-label-md text-primary">Pleated Trousers</p>
+<p class="font-label-md text-[10px] text-secondary">Navy / Size S</p>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md text-error">Low Stock</p>
+<button class="text-[10px] font-bold uppercase underline">Restock</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Top Selling Items (Asymmetric Feature Grid) -->
+<section class="col-span-12 mt-stack-lg">
+<h3 class="font-headline-md text-headline-md mb-8">Top Selling Items</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Product Card 1 -->
+<div class="group">
+<div class="aspect-[4/5] overflow-hidden border border-outline-variant mb-4 relative">
+<img alt="High-end fashion garment" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="A professional fashion editorial photograph featuring a high-end minimalist silk dress hanging in a sun-drenched, white-walled architectural space. The lighting is soft and natural, emphasizing the subtle texture of the ivory fabric. Shadows are soft and long, creating a serene and exclusive atmosphere typical of a premium boutique. The color palette is composed of creamy whites and soft greys." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDefm1nzPsW3VWcdFyE7rKtV6kdUnDcX-Awo-EZCIAM48k0-OMIGxGATfY4FZ1eQkg1XYgiG6sUfC3KzhghvFtHp3Iwy0D_Ac_KCd5Y0AuS41kiVYY_c5ebDw7NbsljN1y_Lld9PTYzly7kWJi10woJkHjEiXBOGHmYT0epX50OYPUJ_1d4WFJgPbHleY6Rhw-l8WB6ja84NC-BTeeut7avO_kV8uqFfoko9N-WQaLIcnFFObW_9bfbZEcrPgSyE2KrOkCSQHHqglw">
+<div class="absolute top-4 left-4 bg-primary text-white px-3 py-1 font-label-md text-[10px] tracking-widest uppercase">Best Seller</div>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-label-md text-label-md text-primary uppercase">Minimalist Silk Gown</h4>
+<p class="font-body-md text-label-sm text-secondary">312 Units Sold this Month</p>
+</div>
+<span class="font-label-md text-label-md">$850.00</span>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="group">
+<div class="aspect-[4/5] overflow-hidden border border-outline-variant mb-4 relative">
+<img alt="Tailored luxury blazer" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="An artistic, high-contrast close-up of a perfectly tailored black wool blazer against a dark, moody background. A single directed spotlight catches the precision of the stitching and the subtle sheen of the fabric. The mood is sophisticated and mysterious, reflecting the confidence of high fashion. Deep charcoal and indigo tones dominate the frame." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgbTl5Av9KLyVBnw6hCpRvOk2EmpjCNKOqd8qwBvRsmIHjl6ZOUi2M2aJtGAS9K8cD1cgSCKMPZKOqycuiDqL6w0aiJ9spEI8QOGmIcVFHzctLZDYNC1Zwqy3fl_u99SDhXkR6g957vjzsED3y8aCavA0j1lXGd442Ad92HgWQgkBNcvWGCQHIso5bbKANWO0RvISuIO9wWypHRLBlUvGPoPOxiXxAdrLsMIhiZ7ldLgKTmqlQzrOYbDgqCyrDF-lmK5MBruKaw6U">
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-label-md text-label-md text-primary uppercase">Structure Blazer</h4>
+<p class="font-body-md text-label-sm text-secondary">248 Units Sold this Month</p>
+</div>
+<span class="font-label-md text-label-md">$1,200.00</span>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="group">
+<div class="aspect-[4/5] overflow-hidden border border-outline-variant mb-4 relative">
+<img alt="Luxury leather footwear" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="A premium product shot of artisanal leather boots placed on a raw concrete pedestal in an industrial-chic studio. The composition is stark and minimalist, with clean lines and sharp focus. The lighting highlights the rich grain of the leather. The color palette is earth-toned with neutral greys and deep blacks." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgzMUmMXt9btACTCX6-qb8MUIVqT_aWU-b2owzaOa8pQ_7vtsKq9rFtW4PsbbUKm-BEc4RW7vTKryDxPE0CULLZAKho3U4qRzi17Uv_ti1avVrABmeddWyaOlzYSroRusazuMImguz5GMQpR-2Xt0Kb6mCIm0JwPdaMemgzMn7FkPvXvaglnavBMQGhjzmljGE1iGAaK4ty0itngUe6Ia09gTVte08DmLBwtPQ5G8D6Q8skCIDRYhZAhMswtwMTWJSDrRTVT5tbNE">
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-label-md text-label-md text-primary uppercase">Artisan Calfskin Boot</h4>
+<p class="font-body-md text-label-sm text-secondary">189 Units Sold this Month</p>
+</div>
+<span class="font-label-md text-label-md">$680.00</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Arrivals (Horizontal Scroll/Bento Hybrid) -->
+<section class="col-span-12 mt-section-gap mb-20">
+<div class="flex items-center justify-between mb-8">
+<h3 class="font-headline-md text-headline-md">Recent Arrivals</h3>
+<a class="font-label-md text-label-sm text-primary uppercase tracking-widest flex items-center gap-2 hover:gap-4 transition-all duration-300" href="#">
+                            View All <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<div class="flex gap-gutter overflow-x-auto hide-scrollbar pb-8">
+<!-- Arrival 1 -->
+<div class="flex-none w-80 group cursor-pointer">
+<div class="aspect-square border border-outline-variant overflow-hidden mb-4">
+<img alt="New season arrivals" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A bright and airy lifestyle shot of a new season linen collection displayed on a minimalist rack in a boutique. Sunlight streams through a window, creating organic leaf shadows on the white wall. The mood is fresh, optimistic, and effortlessly stylish. High-key lighting and a palette of warm neutrals and whites define the aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDG2pwUvFtBbLV8mh7sVSEHkfaBzb3rOS88fNEsRBXfAwVm2gg6Uawa4zqigWMHGxndhUJMjSYTpYQbwUczAhiUS3caBP4cX8iaCUSy11OSUvrfKJfhs4GMPVPiG3s9QJhi8bVFAne3nz-MLjMIHYFXDTF2BbHEC3ajk51xb_1Qs0CQf9JAQirKXK6AMVrlhzpXolf_khZqs05sRxKfjorv7N0s1dZZqPohTw21gdEfGl_D5UtA76Dyd31CQGCfe0frG4OBAXjDrlk">
+</div>
+<span class="font-label-md text-[10px] text-secondary uppercase tracking-[0.2em]">New in Store</span>
+<h4 class="font-headline-md text-headline-md text-primary group-hover:underline">Summer Linen Drop</h4>
+<p class="font-body-md text-label-sm text-secondary mt-1">24 Styles Available</p>
+</div>
+<!-- Arrival 2 -->
+<div class="flex-none w-80 group cursor-pointer">
+<div class="aspect-square border border-outline-variant overflow-hidden mb-4">
+<img alt="Luxury watch accessory" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="An exquisite, ultra-close macro photograph of a precision-engineered luxury timepiece. The focus is incredibly shallow, highlighting the intricate details of the watch face and its polished metallic surfaces. The lighting is dramatic and moody, with deep blacks and sharp silver highlights. The image communicates timeless craftsmanship and premium value." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBusixXRRuOVFKcbn5vd5VC5tStHQA3UTbC7kcY4XRhrqiw84iqEoPwnXRh0j0B7GMkzk0fjKGk6NwmJM6M-sORKQv8km3Qdn1YQIIa_tNtfagjnSDcx7kfSbl8StvxM7Az0kO_YEeLOx0NeAlFkNnppacTCg49JryF6pZEtyIv5BGSxIh7RtPYeuGi2_C7XBfXl60R4dbhQGh6TpJnk32AvL39Z0uyQ7kdyfMARfo6Z7qlttOwVJTmjVi2pO2FQ8aIyjIZtZczlQA">
+</div>
+<span class="font-label-md text-[10px] text-secondary uppercase tracking-[0.2em]">Limited Edition</span>
+<h4 class="font-headline-md text-headline-md text-primary group-hover:underline">Heritage Timepieces</h4>
+<p class="font-body-md text-label-sm text-secondary mt-1">12 Curated Pieces</p>
+</div>
+<!-- Arrival 3 -->
+<div class="flex-none w-80 group cursor-pointer">
+<div class="aspect-square border border-outline-variant overflow-hidden mb-4">
+<img alt="Editorial sunglasses" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A fashion-forward editorial shot of architectural sunglasses resting on an open art book. The background is a minimalist studio with muted beige tones. The lighting is soft and diffused, creating a calm and intellectual atmosphere. The composition is balanced and elegant, emphasizing the design-led nature of the product." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYAvJXpbLilvjo7BK3NdZX01qopgQJx9xmb180cK4okj3spiz5_N1mdhIq5LDxblbOkZ4e_p9N0h6Yw1I2R6NXNZTM-wAXXzqtLeECpClgcC2ChmIhWFlCGZXrE9FWmy_uEys2ZiTHHnqhmgJ3ENtTMBghXaNMAWsBDK3BEpax8pfQtUzB5zmFoVMOKGFx3AqhYQRNQ3VPX9K2XdfNgnkS71er9WM450ETKpwLxyL7AauqeHWtTJ49h7VSaNwFDkjguXnvRieXmNk">
+</div>
+<span class="font-label-md text-[10px] text-secondary uppercase tracking-[0.2em]">Accessory Focus</span>
+<h4 class="font-headline-md text-headline-md text-primary group-hover:underline">Sculptural Frames</h4>
+<p class="font-body-md text-label-sm text-secondary mt-1">Ready for Pre-order</p>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Floating Micro-Interaction Script -->
+<script>
+        // Simple logic to handle active navigation highlight
+        document.querySelectorAll('nav a, aside a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                // Remove active classes from all
+                document.querySelectorAll('nav a, aside a').forEach(l => {
+                    l.classList.remove('text-primary', 'font-bold', 'border-b-2', 'border-r-2', 'bg-surface-container-high');
+                    l.classList.add('text-secondary');
+                });
+                
+                // Add to clicked
+                link.classList.remove('text-secondary');
+                link.classList.add('text-primary', 'font-bold');
+                if(link.closest('nav')) link.classList.add('border-b-2', 'border-primary');
+                if(link.closest('aside')) link.classList.add('border-r-2', 'border-primary', 'bg-surface-container-high');
+            });
+        });
+
+        // Add subtle scroll animation
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 20) {
+                nav.classList.add('shadow-sm');
+                nav.style.backgroundColor = 'rgba(251, 249, 249, 0.95)';
+                nav.style.backdropFilter = 'blur(10px)';
+            } else {
+                nav.classList.remove('shadow-sm');
+                nav.style.backgroundColor = '#fbf9f9';
+                nav.style.backdropFilter = 'none';
+            }
+        });
+    </script>
+</body></html>
