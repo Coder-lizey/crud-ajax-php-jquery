@@ -3,13 +3,13 @@ A CRUD-based web application built using PHP, AJAX, jQuery, and MySQL that perfo
 
 
 
-# # READ ITEM
+# READ ITEM
 ![Inventory](Images/Dashboard.png)
 
-# READ-DELET_EDIT ITEM
+# READ DELETE EDIT ITEM
 ![Inventory](Images/Inventory.png)
 
-# CREATE(ADD) ITEM
+# ADD ITEM
 ![Inventory](Images/additem.png)
 
 # EDIT ITEM
